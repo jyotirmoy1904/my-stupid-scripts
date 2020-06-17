@@ -1,9 +1,11 @@
 
 $user=whoami | %{$_.Split('\')[1];}
 $Value="C:\Users\$user\Pictures\unsplash.jpg"
+#$Category = Read-Host -Prompt "What is today's  special word?"
+echo "Gimme a minute..."
 rm -Force C:\Users\$user\Pictures\unsplash.jpg
 $client = new-object System.Net.WebClient
-$client.DownloadFile("https://source.unsplash.com/3104x1024/?Nature","$Value")
+$client.DownloadFile("https://source.unsplash.com/3104x1024/?random,beautiful","$Value")
 
 #Set-ItemProperty -path 'HKCU:\Control Panel\Desktop\' -name wallpaper -value $Value
 #Start-Sleep -Seconds 5
