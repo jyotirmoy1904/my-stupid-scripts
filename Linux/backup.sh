@@ -32,15 +32,18 @@ echo "Backing up dotfiles..."
 ##dotfiles
 mkdir ~/backup/dotfiles
 cp -ra ~/.config ~/backup/dotfiles/.config
+cp -ra ~/.ssh ~/backup/dotfiles/.ssh
 cp ~/.zshrc ~/backup/dotfiles/.zshrc
 cp ~/.zsh_history ~/backup/dotfiles/.zsh_history
 cp ~/.p10k.zsh ~/backup/dotfiles/.p10k.zsh
 
 echo "Compressing..."
-tar -cvf $dates.tar ~/backup
+tar -cvf $dates.tar ~/backup > /dev/null
 echo $dates > last
 
 
 echo "Unmounting and cleaning up"
 cd ~
 sudo umount /dev/sdb1
+rm -rf ~/backup
+rm -rf ~/safestore

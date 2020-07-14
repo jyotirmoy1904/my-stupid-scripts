@@ -5,7 +5,8 @@ if [[ $(id -u) != 0 ]]; then
 fi
 let "rand1 = $RANDOM % 6"
 let "rand2 = $RANDOM % 6"
-if [[ $rand1 == $rand2 ]]; then
+if [[ $rand1 == $rand2 ]]; 
+then
     {
         echo "Well, your luck isn't doing so good."
         echo "5"
