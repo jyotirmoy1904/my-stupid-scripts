@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo systemctl restart ofod
+sudo systemctl restart ofono
 
 ##Enable ofono phonesim modem for pulseaudio HFP connections
 phonesim -p 12345 /usr/share/phonesim/default.xml&    
@@ -9,8 +9,7 @@ dbus-send --print-reply --system --dest=org.ofono /phonesim org.ofono.Modem.SetP
 
 ##connect bluetooth device
 bluetoothctl connect 58:85:E9:11:05:85
-
+sleep 1
 ##set pulseaudio
+pulseaudio -k
 pactl set-card-profile bluez_card.58_85_E9_11_05_85 headset_head_unit
-
-
