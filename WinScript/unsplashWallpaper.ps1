@@ -1,12 +1,20 @@
 
 $user=whoami | %{$_.Split('\')[1];}
-$Value="C:\Users\$user\Pictures\unsplash.jpg"
+$Value="C:\Users\$user\OneDrive\Pictures\unsplash.jpg"
 #$Category = Read-Host -Prompt "What is today's  special word?"
-echo "Gimme a minute..."
-rm -Force C:\Users\$user\Pictures\unsplash.jpg
+Write-Output "Gimme a minute..."
+Remove-Item -Force C:\Users\$user\OneDrive\Pictures\unsplash.jpg
 $client = new-object System.Net.WebClient
-$client.DownloadFile("https://source.unsplash.com/3104x1024/?random,beautiful","$Value")
-
+try{
+   $client.DownloadFile("https://source.unsplash.com/1920x1080/?lanscape,mountain,night","$Value")
+}
+catch [System.Net.WebException] {
+   if ($_.Exception.InnerException) {
+     Write-Error $_.Exception.InnerException.Message
+   } else {
+     Write-Error $_.Exception.Message
+   }
+ }
 #Set-ItemProperty -path 'HKCU:\Control Panel\Desktop\' -name wallpaper -value $Value
 #Start-Sleep -Seconds 5
 #rundll32.exe user32.dll, UpdatePerUserSystemParameters 1 ,True
