@@ -6,7 +6,7 @@ Write-Output "Gimme a minute..."
 Remove-Item -Force C:\Users\$user\OneDrive\Pictures\unsplash.jpg
 $client = new-object System.Net.WebClient
 try{
-   $client.DownloadFile("https://source.unsplash.com/1440x900/?mountains","$Value")
+   $client.DownloadFile("https://source.unsplash.com/1920x1080/?mountains","$Value")
 }
 catch [System.Net.WebException] {
    if ($_.Exception.InnerException) {
